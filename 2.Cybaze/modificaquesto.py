@@ -787,8 +787,8 @@ def menuiniziale():
                                    'Luca Longhi\n\n'
                                     'lucalonghi18@yahoo.it\n\n'
                                     'www.lucalonghi.cloud\n\n'
-                                    '24-09-2020\n\n'
-                                    '0.09.24.2\n\n'
+                                    '25-09-2020\n\n'
+                                    '1.09.25.8\n\n'
                                     'Giulio Monaco\nPietro Melillo\nAndrea Vercesi\nPatrizia Garavaglia\n', bg="black", fg="yellow",justify=LEFT)
         sotto.config(font=('helvetica', 10))
         sotto.grid(row=0, column=2, sticky="WE", padx=20, pady=10)
