@@ -1,6 +1,6 @@
-#-----------------------------------------------------------------------------------------------------------------------
-#------------------------------------------IMPORTAZIONE MODULI E LIBRERIE-----------------------------------------------
-#-----------------------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------IMPORTAZIONE MODULI E LIBRERIE-----------------------------------------------
+# -----------------------------------------------------------------------------------------------------------------------
 
 from netaddr import *
 from ipaddress import IPv4Address, IPv4Network
@@ -15,48 +15,50 @@ import time
 import ssl
 import socket as sk
 
-#-----------------------------------------------------------------------------------------------------------------------
-#-------------------------------------------CREAZIONE FINESTRA PRINCIPALE-----------------------------------------------
-#-----------------------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------------------------------
+# -------------------------------------------CREAZIONE FINESTRA PRINCIPALE-----------------------------------------------
+# -----------------------------------------------------------------------------------------------------------------------
 
 root = Tk()
 root.geometry("500x680")
 root.title("ITS TTF IP HUNTER - Luca Longhi")
 root.configure(background='black')
-root.resizable(False,False)
+root.resizable(False, False)
 root.grid_columnconfigure(0, weight=1)
 root.iconbitmap("C:\cybaze.ico")
 
-#-----------------------------------------------------------------------------------------------------------------------
-#------------------------------------------------PULIZIA ROOT WINDOW----------------------------------------------------
-#-----------------------------------------------------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------------PULIZIA ROOT WINDOW----------------------------------------------------
+# -----------------------------------------------------------------------------------------------------------------------
 
 def clear(object):
     widget = object.grid_slaves()
     for x in widget:
         x.destroy()
 
-#-----------------------------------------------------------------------------------------------------------------------
-#---------------------------------------------------MENU' INIZIALE------------------------------------------------------
-#-----------------------------------------------------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------MENU' INIZIALE------------------------------------------------------
+# -----------------------------------------------------------------------------------------------------------------------
 
 
 def menuiniziale():
     clear(root)
     root.title("ITS TTF IP HUNTER - Luca Longhi")
-    ipv4frame = Frame(root)     #creazione frame di root per miglior gestione dei widget
+    ipv4frame = Frame(root)  # creazione frame di root per miglior gestione dei widget
 
-# -----------------------------------------------------------------------------------------------------------------------
-# -----------------------------------------------IPV4 CHECKER WINDOW-----------------------------------------------------
-# -----------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------IPV4 CHECKER WINDOW-----------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
     def primotasto():
 
-# -----------------------------------------------------------------------------------------------------------------------
-# -----------------------------------------------IPV4 CHECKER FUNCTION---------------------------------------------------
-# -----------------------------------------------------------------------------------------------------------------------
+        # -----------------------------------------------------------------------------------------------------------------------
+        # -----------------------------------------------IPV4 CHECKER FUNCTION---------------------------------------------------
+        # -----------------------------------------------------------------------------------------------------------------------
         def IndirizzoIP():
             try:
-                #testo se l'indirizzo è pubblico o privato
+                # testo se l'indirizzo è pubblico o privato
                 indirizzoipdatestare = entry.get()
                 stato = IPAddress(indirizzoipdatestare).is_private()
                 # define classA,classB and classC
@@ -71,12 +73,13 @@ def menuiniziale():
                 stato2 = ip1 in classB
                 stato3 = ip1 in classC
 
-                #test of class and private/public IP
+                # test of class and private/public IP
                 if (stato == True and stato1 == True):
                     clear(ipv4frame)
                     print("L'indirizzo IP è privato e di classe A")
                     file = open("indirizzi_testati_validi.txt", "a")
-                    file.write("\nL'indirizzo IP " + indirizzoipdatestare + " e' di tipo Privato ed e' di classe A")  # a capo
+                    file.write(
+                        "\nL'indirizzo IP " + indirizzoipdatestare + " e' di tipo Privato ed e' di classe A")  # a capo
                     file.close()
                     risultato = Label(ipv4frame, text="L'indirizzo IP testato è PRIVATO \nClasse A", fg="blue",
                                       bg="black")
@@ -87,7 +90,8 @@ def menuiniziale():
                     clear(ipv4frame)
                     print("L'indirizzo IP è privato e di classe B")
                     file = open("indirizzi_testati_validi.txt", "a")
-                    file.write("\nL'indirizzo IP " + indirizzoipdatestare + " e' di tipo Privato ed e' di classe B")  # a capo
+                    file.write(
+                        "\nL'indirizzo IP " + indirizzoipdatestare + " e' di tipo Privato ed e' di classe B")  # a capo
                     file.close()
                     risultato = Label(ipv4frame, text="L'indirizzo IP testato è PRIVATO \nClasse B", fg="blue",
                                       bg="black")
@@ -98,9 +102,11 @@ def menuiniziale():
                     clear(ipv4frame)
                     print("L'indirizzo IP è privato e di classe C")
                     file = open("indirizzi_testati_validi.txt", "a")
-                    file.write("\nL'indirizzo IP " + indirizzoipdatestare + " e' di tipo Privato ed e' di classe C")  # a capo
+                    file.write(
+                        "\nL'indirizzo IP " + indirizzoipdatestare + " e' di tipo Privato ed e' di classe C")  # a capo
                     file.close()
-                    risultato = Label(ipv4frame, text="L'indirizzo IP testato è PRIVATO \nClasse C", fg="blue", bg="black")
+                    risultato = Label(ipv4frame, text="L'indirizzo IP testato è PRIVATO \nClasse C", fg="blue",
+                                      bg="black")
                     risultato.config(font=('helvetica', 15))
                     risultato.grid(row=4, column=0, sticky="N", padx=20, pady=10)
                     buttonmenu.grid(row=10, column=0, sticky="N", padx=20, pady=250)
@@ -111,7 +117,7 @@ def menuiniziale():
                     file.write("\nL'indirizzo IP " + indirizzoipdatestare + " e' di tipo Pubblico")  # a capo
                     file.close()
 
-                    #using API ask for information of this Public IP from whois
+                    # using API ask for information of this Public IP from whois
                     http = urllib3.PoolManager()
                     url = "http://ipwhois.app/json/" + str(indirizzoipdatestare)
                     r = http.request('GET', url)
@@ -136,23 +142,28 @@ def menuiniziale():
 
                     print(perstampare)
 
-
-                    #show more and show less button for print the information from whois and abuseipdb
+                    # show more and show less button for print the information from whois and abuseipdb
                     def lessinfo():
                         clear(ipv4frame)
                         publicIP = Label(ipv4frame, text="L'indirizzo IP testato è PUBBLICO\nINFORMAZIONI DA WHOIS:\n",
-                                                    fg="blue", bg="black")
+                                         fg="blue", bg="black")
                         publicIP.config(font=('helvetica', 15))
                         publicIP.grid(row=4, column=0, sticky="N", padx=20, pady=0)
-                        allinfowhois = Label(ipv4frame,text= "IP TESTED:                                   " + response["ip"] +
-                                                             "\nCONTINENT:                              " + response["continent"] +
-                                                             "\nCOUNTRY CODE:                      " + response["country_code"] +
-                                                             "\nASN:                                            " + response["asn"] +
-                                                             "\nISP:                                              " + response["isp"] +
-                                                             "\nIS WHITE LISTED?:                      " + str(perstampare["isWhitelisted"])+
-                                                             "\nTOTAL REPORT(S):                     " + str(perstampare["totalReports"]) +
-                                                             "\nDISTINCT USERS' REPORTS:       " + str(perstampare["numDistinctUsers"]) +
-                                                             "\n\n\n",justify=LEFT, bg="black", fg="white")
+                        allinfowhois = Label(ipv4frame,
+                                             text="IP TESTED:                                   " + response["ip"] +
+                                                  "\nCONTINENT:                              " + response["continent"] +
+                                                  "\nCOUNTRY CODE:                      " + response["country_code"] +
+                                                  "\nASN:                                            " + response[
+                                                      "asn"] +
+                                                  "\nISP:                                              " + response[
+                                                      "isp"] +
+                                                  "\nIS WHITE LISTED?:                      " + str(
+                                                 perstampare["isWhitelisted"]) +
+                                                  "\nTOTAL REPORT(S):                     " + str(
+                                                 perstampare["totalReports"]) +
+                                                  "\nDISTINCT USERS' REPORTS:       " + str(
+                                                 perstampare["numDistinctUsers"]) +
+                                                  "\n\n\n", justify=LEFT, bg="black", fg="white")
                         allinfowhois.grid(row=6, column=0, sticky="N", padx=10, pady=10)
                         button2 = Button(ipv4frame, text='SHOW MORE', command=moreinfo, bg="cyan")
                         button2.grid(row=7, column=0, sticky="N", padx=20, pady=15)
@@ -163,21 +174,30 @@ def menuiniziale():
                     def moreinfo():
                         clear(ipv4frame)
                         publicIP = Label(ipv4frame, text="L'indirizzo IP testato è PUBBLICO\nINFORMAZIONI DA WHOIS:\n",
-                                                    fg="blue", bg="black")
+                                         fg="blue", bg="black")
                         publicIP.config(font=('helvetica', 15))
                         publicIP.grid(row=4, column=0, sticky="N", padx=20, pady=0)
-                        allinfowhois = Label(ipv4frame,text= "IP TESTED:                                   " + response["ip"] +
-                                                             "\nCONTINENT:                              " + response["continent"] +
-                                                             "\nCOUNTRY CODE:                      " + response["country_code"] +
-                                                             "\nASN:                                            " + response["asn"] +
-                                                             "\nISP:                                              " + response["isp"] +
-                                                             "\nIS WHITE LISTED?:                      " + str(perstampare["isWhitelisted"])+
-                                                             "\nTOTAL REPORT(S):                     " + str(perstampare["totalReports"]) +
-                                                             "\nDISTINCT USERS' REPORTS:       " + str(perstampare["numDistinctUsers"]) +
-                                                             "\nLAST REPORT DATE:                   " + str(perstampare["lastReportedAt"]) +
-                                                             "\nLATITUDE:                                    " + response["latitude"] +
-                                                             "\nLONGITUDE:                                 " + response["longitude"]
-                                                             ,justify=LEFT, bg="black",fg="white")
+                        allinfowhois = Label(ipv4frame,
+                                             text="IP TESTED:                                   " + response["ip"] +
+                                                  "\nCONTINENT:                              " + response["continent"] +
+                                                  "\nCOUNTRY CODE:                      " + response["country_code"] +
+                                                  "\nASN:                                            " + response[
+                                                      "asn"] +
+                                                  "\nISP:                                              " + response[
+                                                      "isp"] +
+                                                  "\nIS WHITE LISTED?:                      " + str(
+                                                 perstampare["isWhitelisted"]) +
+                                                  "\nTOTAL REPORT(S):                     " + str(
+                                                 perstampare["totalReports"]) +
+                                                  "\nDISTINCT USERS' REPORTS:       " + str(
+                                                 perstampare["numDistinctUsers"]) +
+                                                  "\nLAST REPORT DATE:                   " + str(
+                                                 perstampare["lastReportedAt"]) +
+                                                  "\nLATITUDE:                                    " + response[
+                                                      "latitude"] +
+                                                  "\nLONGITUDE:                                 " + response[
+                                                      "longitude"]
+                                             , justify=LEFT, bg="black", fg="white")
                         allinfowhois.grid(row=6, column=0, sticky="N", padx=10, pady=10)
 
                         button2 = Button(ipv4frame, text='  SHOW LESS  ', command=lessinfo, bg="cyan")
@@ -188,7 +208,7 @@ def menuiniziale():
 
                     lessinfo()
 
-
+            # entry for error type
             except:
                 clear(ipv4frame)
                 publicIP = Label(ipv4frame, text="INDIRIZZO IP NON VALIDO",
@@ -199,6 +219,7 @@ def menuiniziale():
 
                 buttonmenu.grid(row=10, column=0, sticky="N", padx=10, pady=270)
 
+        # new windows with new button and label
         clear(root)
         root.title("ITS TTF IP HUNTER - IP CHECKER - Luca Longhi")
 
@@ -222,16 +243,19 @@ def menuiniziale():
         buttonmenu = Button(root, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
         buttonmenu.grid(row=10, column=0, sticky="N", padx=10, pady=320)
 
-# -----------------------------------------------------------------------------------------------------------------------
-# -----------------------------------------------DNS RESOLVER WINDOW-----------------------------------------------------
-# -----------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------DNS RESOLVER WINDOW-----------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
 
     def secondotasto():
+
         def IndirizzoIP():
+
+            # record A resolution
             try:
                 domain = entry.get()
-                print ("\n\nThe IP Address of the Domain Name is: ")
-                risultati = Label(root, text="The DNS server of "+ str(domain) + " is: \n", bg="black", fg="white")
+                print("\n\nThe IP Address of the Domain Name is: ")
+                risultati = Label(root, text="The DNS server of " + str(domain) + " is: \n", bg="black", fg="white")
                 risultati.config(font=('helvetica', 15))
 
                 result = dns.resolver.resolve(str(domain), 'A')
@@ -249,7 +273,7 @@ def menuiniziale():
                 risultati.config(font=('helvetica', 15))
                 risultati.grid(row=6, column=0)
 
-
+        # new window
         clear(root)
         root.title("ITS TTF IP HUNTER - DNS RESOLVER- Luca Longhi")
 
@@ -264,26 +288,25 @@ def menuiniziale():
         entry = Entry()
         entry.grid(row=2, column=0, sticky="WE", padx=140, pady=20)
 
-
-
         button1 = Button(text='Check DNS Server', command=IndirizzoIP, bg="cyan")
         button1.grid(row=5, column=0, sticky="N", padx=10, pady=10)
-
-
 
         ipv4frame = Frame(root)
         ipv4frame.grid(row=8, column=0, sticky="N", padx=10, pady=10)
         ipv4frame.configure(bg="black")
         buttonmenu = Button(root, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
-        buttonmenu.grid(row=10, column=0, sticky="N",padx=10, pady=300)
+        buttonmenu.grid(row=10, column=0, sticky="N", padx=10, pady=300)
 
-# -----------------------------------------------------------------------------------------------------------------------
-# --------------------------------------------------DATABASE WINDOW------------------------------------------------------
-# -----------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
+    # --------------------------------------------------DATABASE WINDOW------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
 
     def terzotasto():
+        # global variable for login memory
         global log
-        if(log==True):
+        if (log == True):
+
+            # whitelist function
             def inviowhitelist():
                 try:
                     # creo e/o connetto al database
@@ -313,8 +336,8 @@ def menuiniziale():
                     servizi = servizientry.get()
                     note = noteentry.get()
                     whitelist = "WHITELIST"
-                    item = [str(ip), str(cliente), str(dominio), str(dispositivo), str(servizi), str(note), str(whitelist)]
-
+                    item = [str(ip), str(cliente), str(dominio), str(dispositivo), str(servizi), str(note),
+                            str(whitelist)]
 
                     # esecuzione inserimento valori dell'item in IndirizziIP
                     c.execute("insert into IndirizziIP values(?,?,?,?,?,?,?);",
@@ -327,22 +350,25 @@ def menuiniziale():
                     conn.close()
 
                     print("Valore correttamente inserito nel database")
-                    presente = Label(root, text="      VALORE CORRETTAMENTE INSERITO NEL DATABASE      ", bg="black", fg="green")
+                    presente = Label(root, text="      VALORE CORRETTAMENTE INSERITO NEL DATABASE      ", bg="black",
+                                     fg="green")
                     presente.config(font=('helvetica', 13))
                     presente.grid(row=10, column=0)
 
                     # gestione errore del valore già inserito
                 except sqlite3.IntegrityError:
                     print("Valore già nel database")
-                    presente = Label(root, text="      VALORE GIA' PRESENTE NEL DATABASE      ", bg="black", fg="orange")
+                    presente = Label(root, text="      VALORE GIA' PRESENTE NEL DATABASE      ", bg="black",
+                                     fg="orange")
                     presente.config(font=('helvetica', 15))
-                    presente.grid(row=10,column=0)
+                    presente.grid(row=10, column=0)
                 except AddrFormatError:
                     print("Valore non valido")
                     presente = Label(root, text="           VALORE DELL'IP NON VALIDO           ", bg="black", fg="red")
                     presente.config(font=('helvetica', 15))
-                    presente.grid(row=10,column=0)
+                    presente.grid(row=10, column=0)
 
+            # blacklist function
             def invioblacklist():
                 try:
                     # creo e/o connetto al database
@@ -372,8 +398,8 @@ def menuiniziale():
                     servizi = servizientry.get()
                     note = noteentry.get()
                     whitelist = "BLACKLIST"
-                    item = [str(ip), str(cliente), str(dominio), str(dispositivo), str(servizi), str(note), str(whitelist)]
-
+                    item = [str(ip), str(cliente), str(dominio), str(dispositivo), str(servizi), str(note),
+                            str(whitelist)]
 
                     # esecuzione inserimento valori dell'item in IndirizziIP
                     c.execute("insert into IndirizziIP values(?,?,?,?,?,?,?);",
@@ -386,21 +412,25 @@ def menuiniziale():
                     conn.close()
 
                     print("Valore correttamente inserito nel database")
-                    presente = Label(root, text="      VALORE CORRETTAMENTE INSERITO NEL DATABASE      ", bg="black", fg="green")
+                    presente = Label(root, text="      VALORE CORRETTAMENTE INSERITO NEL DATABASE      ", bg="black",
+                                     fg="green")
                     presente.config(font=('helvetica', 13))
                     presente.grid(row=10, column=0)
 
                     # gestione errore del valore già inserito
                 except sqlite3.IntegrityError:
                     print("Valore già nel database")
-                    presente = Label(root, text="      VALORE GIA' PRESENTE NEL DATABASE      ", bg="black", fg="orange")
+                    presente = Label(root, text="      VALORE GIA' PRESENTE NEL DATABASE      ", bg="black",
+                                     fg="orange")
                     presente.config(font=('helvetica', 15))
-                    presente.grid(row=10,column=0)
+                    presente.grid(row=10, column=0)
                 except AddrFormatError:
                     print("Valore non valido")
                     presente = Label(root, text="           VALORE DELL'IP NON VALIDO           ", bg="black", fg="red")
                     presente.config(font=('helvetica', 15))
-                    presente.grid(row=10,column=0)
+                    presente.grid(row=10, column=0)
+
+            # create new window with all the entry
             clear(root)
             root.title("ITS TTF IP HUNTER - IP DATABASE - Luca Longhi")
 
@@ -432,19 +462,20 @@ def menuiniziale():
             noteentry.grid(row=7, column=0, sticky="WE", padx=140, pady=10)
             noteentry.insert(END, 'Notes')
 
-            databaseframe= Frame(root)
+            databaseframe = Frame(root)
             databaseframe.configure(bg="black")
             databaseframe.grid(row=8, column=0, columnspan=1)
 
-
-            button1 = Button(databaseframe,text='Add IP as WHITELIST', command=inviowhitelist, bg="white", fg="blue")
+            button1 = Button(databaseframe, text='Add IP as WHITELIST', command=inviowhitelist, bg="white", fg="blue")
             button1.grid(row=0, column=0, sticky="N", padx=10, pady=10)
 
-            button2 = Button(databaseframe,text='Add IP as BLACKLIST', command=invioblacklist, bg="grey", fg="black")
+            button2 = Button(databaseframe, text='Add IP as BLACKLIST', command=invioblacklist, bg="grey", fg="black")
             button2.grid(row=0, column=1, sticky="N", padx=10, pady=10)
 
             buttonmenu = Button(root, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
             buttonmenu.grid(row=11, column=0, sticky="N", padx=10, pady=220)
+
+        # if not already logged in, show login/register page
         else:
             lipage = Toplevel(root)
             lipage.geometry("400x220")
@@ -455,7 +486,7 @@ def menuiniziale():
             lipage.iconbitmap("C:\cybaze.ico")
 
             def tablecreation():
-                # db connection
+                # create table if not exists
                 conn = sqlite3.connect("loginlist.db")
                 c = conn.cursor()
                 c.execute("""CREATE TABLE IF NOT EXISTS loginlist (
@@ -467,6 +498,7 @@ def menuiniziale():
 
             def registerpage():
 
+                # new user registration function
                 def registration():
                     name = regus.get()
                     password = regpwd.get()
@@ -517,8 +549,10 @@ def menuiniziale():
                 button.grid(row=5, column=0, padx=20, pady=0)
                 regframe.grab_set()
 
+            # login function
             def loginpage():
 
+                # test registration function with database query
                 def test_reg(name, password):
                     tablecreation()
                     conn = sqlite3.connect("loginlist.db")
@@ -536,6 +570,7 @@ def menuiniziale():
 
                         return "User already register"
 
+                # login function
                 def login():
                     global log
                     name = logus.get()
@@ -607,11 +642,13 @@ def menuiniziale():
             lipage.grab_set()
             lipage.mainloop()
 
-# -----------------------------------------------------------------------------------------------------------------------
-# --------------------------------------------------SSL SCAN WINDOWS-----------------------------------------------------
-# -----------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
+    # --------------------------------------------------SSL SCAN WINDOWS-----------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
 
     def quartotasto():
+
+        # SSL function
         def sslscan():
             hostname = str(entry5.get())
 
@@ -622,15 +659,19 @@ def menuiniziale():
                     with context.wrap_socket(sock, server_hostname=hostname) as ssock:
                         print(ssock.version())
                         clear(framescritta)
-                        result = Label(framescritta, text="Site " + hostname + " use a \n" + ssock.version() + " certificate", font=("helvetica", 18), bg="black", fg="green")
+                        result = Label(framescritta,
+                                       text="Site " + hostname + " use a \n" + ssock.version() + " certificate",
+                                       font=("helvetica", 18), bg="black", fg="green")
                         result.grid(row=7, column=0, padx=20, pady=30)
-                        buttonmenu = Button(framescritta, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
+                        buttonmenu = Button(framescritta, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow",
+                                            fg="black")
                         buttonmenu.grid(row=10, column=0, sticky="N", padx=20, pady=260)
 
-            except :
+            except:
                 print("Site not valid or SSL not on site")
                 clear(framescritta)
-                result = Label(framescritta, text="Site not valid or SSL not on site", font=("helvetica", 18), bg="black", fg="orange")
+                result = Label(framescritta, text="Site not valid or SSL not on site", font=("helvetica", 18),
+                               bg="black", fg="orange")
                 result.grid(row=7, column=0, padx=20, pady=30)
                 buttonmenu = Button(framescritta, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
                 buttonmenu.grid(row=10, column=0, sticky="N", padx=20, pady=290)
@@ -652,11 +693,11 @@ def menuiniziale():
         framescritta = Frame(root, bg="black")
         framescritta.grid(row=7, column=0)
         buttonmenu = Button(root, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
-        buttonmenu.grid(row=10, column=0, sticky="N",padx= 20 ,pady=380)
+        buttonmenu.grid(row=10, column=0, sticky="N", padx=20, pady=380)
 
-# -----------------------------------------------------------------------------------------------------------------------
-# ------------------------------------------------MAIL SCAN WINDOW-------------------------------------------------------
-# -----------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
+    # ------------------------------------------------MAIL SCAN WINDOW-------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
 
     def quintotasto():
         clear(root)
@@ -671,18 +712,18 @@ def menuiniziale():
         titolo.grid(row=1, column=0, sticky="WE", padx=20, pady=40)
 
         buttonmenu = Button(root, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
-        buttonmenu.grid(row=10, column=0, sticky="N", padx=10, pady= 340)
+        buttonmenu.grid(row=10, column=0, sticky="N", padx=10, pady=340)
 
-# -----------------------------------------------------------------------------------------------------------------------
-# -------------------------------------------------NETWORK SCAN WINDOW---------------------------------------------------
-# -----------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
+    # -------------------------------------------------NETWORK SCAN WINDOW---------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
 
     def sestotasto():
         clear(root)
-        #root.geometry("500x750")
+        # root.geometry("500x750")
         root.title("ITS TTF IP HUNTER - Network Scanner - Luca Longhi")
 
-
+        # function for scan every single port in a range
         def networkscan():
             try:
                 startTime = time.time()
@@ -701,7 +742,7 @@ def menuiniziale():
                     franco.tag_config("open", background="green", foreground="white", justify='center')
                     if (conn == 0):
                         print('Port %d: OPEN' % (i,))
-                        franco.insert(END, 'Port %d: OPEN' % (i,) + "\n" ,"open")
+                        franco.insert(END, 'Port %d: OPEN' % (i,) + "\n", "open")
 
                     '''else:
                         print('Port %d: CLOSED' % (i,))
@@ -713,12 +754,10 @@ def menuiniziale():
                 minuti = finishTime - startTime
                 print('Time taken: ', float(minuti))
 
-
                 franco.insert(END, "Time taken by script: %.2f second(s)\n" % (minuti), "end")
             except ValueError:
                 franco.tag_config("error", background="red", foreground="black", justify='center')
-                franco.insert(END, "SOMETHING WENT WRONG, TRY TO RETYPE THE VALUE\n" , "error")
-
+                franco.insert(END, "SOMETHING WENT WRONG, TRY TO RETYPE THE VALUE\n", "error")
 
         titolo = Label(root, text='NETWORK SCANNER', bg="black", fg="violet")
         titolo.config(font=('helvetica', 30))
@@ -750,20 +789,15 @@ def menuiniziale():
 
         scrollbar.config(command=franco.yview)
 
-
-
-
         button1 = Button(text='Scan Network Port', command=networkscan, bg="cyan")
         button1.grid(row=6, column=0, sticky="N", padx=10, pady=10)
-
-
 
         buttonmenu = Button(root, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
         buttonmenu.grid(row=10, column=0, sticky="N")
 
-# -----------------------------------------------------------------------------------------------------------------------
-# ----------------------------------------------------CREDITS WINDOW-----------------------------------------------------
-# -----------------------------------------------------------------------------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
+    # ----------------------------------------------------CREDITS WINDOW-----------------------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
 
     def settimotasto():
         credit = Toplevel(root)
@@ -781,27 +815,26 @@ def menuiniziale():
                                     'VERSION:\n\n'
                                     'Collaborator:\n\n\n\n', bg="black", fg="violet", justify=LEFT)
         titolo.config(font=('helvetica', 10))
-        titolo.grid(row=0, column=1,sticky="WE", padx=20, pady=10)
+        titolo.grid(row=0, column=1, sticky="WE", padx=20, pady=10)
 
         sotto = Label(credit, text='\n\n'
                                    'Luca Longhi\n\n'
-                                    'lucalonghi18@yahoo.it\n\n'
-                                    'www.lucalonghi.cloud\n\n'
-                                    '25-09-2020\n\n'
-                                    '1.09.25.8\n\n'
-                                    'Giulio Monaco\nPietro Melillo\nAndrea Vercesi\nPatrizia Garavaglia\n', bg="black", fg="yellow",justify=LEFT)
+                                   'lucalonghi18@yahoo.it\n\n'
+                                   'www.lucalonghi.cloud\n\n'
+                                   '25-09-2020\n\n'
+                                   '1.09.25.8\n\n'
+                                   'Giulio Monaco\nPietro Melillo\nAndrea Vercesi\nPatrizia Garavaglia\n', bg="black",
+                      fg="yellow", justify=LEFT)
         sotto.config(font=('helvetica', 10))
         sotto.grid(row=0, column=2, sticky="WE", padx=20, pady=10)
 
-
-        exitbutton= Button(credit, text="EXIT", bg= "red",fg="white" ,command=credit.destroy)
+        exitbutton = Button(credit, text="EXIT", bg="red", fg="white", command=credit.destroy)
         exitbutton.grid(row=1, column=0, sticky="WE", padx=80, pady=0, columnspan=3)
         credit.grab_set()
 
-# -----------------------------------------------------------------------------------------------------------------------
-# ---------------------------------------CREATE GRAPHICS AND BUTTON OF THE MENU PAGE-------------------------------------
-# -----------------------------------------------------------------------------------------------------------------------
-
+    # -----------------------------------------------------------------------------------------------------------------------
+    # ---------------------------------------CREATE GRAPHICS AND BUTTON OF THE MENU PAGE-------------------------------------
+    # -----------------------------------------------------------------------------------------------------------------------
 
     titolo = Label(root, text='SELECT THE OPERATION', bg="black", fg="violet")
     titolo.config(font=('helvetica', 25))
@@ -811,9 +844,10 @@ def menuiniziale():
     tasto1.grid(row=1, column=0, sticky="WE", padx=80, pady=10)
     tasto2 = Button(root, text="DNS Resolver", command=secondotasto, font=("helvetica", 14), bg="yellow")
     tasto2.grid(row=2, column=0, sticky="WE", padx=80, pady=10)
-    tasto3 = Button(root, text="Add a private IP to your database", command=terzotasto, font=("helvetica", 14),bg="yellow")
+    tasto3 = Button(root, text="Add a private IP to your database", command=terzotasto, font=("helvetica", 14),
+                    bg="yellow")
     tasto3.grid(row=3, column=0, sticky="WE", padx=80, pady=10)
-    tasto4 = Button(root, text="SSL Scanner", command=quartotasto, font=("helvetica", 14),bg="yellow")
+    tasto4 = Button(root, text="SSL Scanner", command=quartotasto, font=("helvetica", 14), bg="yellow")
     tasto4.grid(row=4, column=0, sticky="WE", padx=80, pady=10)
     tasto5 = Button(root, text="Mail Scanner", command=quintotasto, font=("helvetica", 14), bg="yellow")
     tasto5.grid(row=5, column=0, sticky="WE", padx=80, pady=10)
@@ -822,11 +856,11 @@ def menuiniziale():
     tasto7 = Button(root, text="CREDITS", command=settimotasto, font=("helvetica", 10), bg="violet", fg="black")
     tasto7.grid(row=7, column=0, sticky="WE", padx=160, pady=120)
 
+
 global log
 
 log = False
 
 menuiniziale()
-
 
 root.mainloop()

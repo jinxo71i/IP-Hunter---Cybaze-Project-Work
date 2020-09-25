@@ -188,7 +188,7 @@ def menuiniziale():
 
                     lessinfo()
 
-
+            #entry for error type
             except:
                 clear(ipv4frame)
                 publicIP = Label(ipv4frame, text="INDIRIZZO IP NON VALIDO",
@@ -199,6 +199,8 @@ def menuiniziale():
 
                 buttonmenu.grid(row=10, column=0, sticky="N", padx=10, pady=270)
 
+
+        #new windows with new button and label
         clear(root)
         root.title("ITS TTF IP HUNTER - IP CHECKER - Luca Longhi")
 
@@ -227,7 +229,10 @@ def menuiniziale():
 # -----------------------------------------------------------------------------------------------------------------------
 
     def secondotasto():
+
         def IndirizzoIP():
+
+            #record A resolution
             try:
                 domain = entry.get()
                 print ("\n\nThe IP Address of the Domain Name is: ")
@@ -249,7 +254,7 @@ def menuiniziale():
                 risultati.config(font=('helvetica', 15))
                 risultati.grid(row=6, column=0)
 
-
+        #new window
         clear(root)
         root.title("ITS TTF IP HUNTER - DNS RESOLVER- Luca Longhi")
 
@@ -282,8 +287,11 @@ def menuiniziale():
 # -----------------------------------------------------------------------------------------------------------------------
 
     def terzotasto():
+        #global variable for login memory
         global log
         if(log==True):
+
+            #whitelist function
             def inviowhitelist():
                 try:
                     # creo e/o connetto al database
@@ -343,6 +351,7 @@ def menuiniziale():
                     presente.config(font=('helvetica', 15))
                     presente.grid(row=10,column=0)
 
+            #blacklist function
             def invioblacklist():
                 try:
                     # creo e/o connetto al database
@@ -401,6 +410,8 @@ def menuiniziale():
                     presente = Label(root, text="           VALORE DELL'IP NON VALIDO           ", bg="black", fg="red")
                     presente.config(font=('helvetica', 15))
                     presente.grid(row=10,column=0)
+
+            #create new window with all the entry
             clear(root)
             root.title("ITS TTF IP HUNTER - IP DATABASE - Luca Longhi")
 
@@ -445,6 +456,8 @@ def menuiniziale():
 
             buttonmenu = Button(root, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
             buttonmenu.grid(row=11, column=0, sticky="N", padx=10, pady=220)
+
+        #if not already logged in, show login/register page
         else:
             lipage = Toplevel(root)
             lipage.geometry("400x220")
@@ -455,7 +468,7 @@ def menuiniziale():
             lipage.iconbitmap("C:\cybaze.ico")
 
             def tablecreation():
-                # db connection
+                # create table if not exists
                 conn = sqlite3.connect("loginlist.db")
                 c = conn.cursor()
                 c.execute("""CREATE TABLE IF NOT EXISTS loginlist (
@@ -467,6 +480,7 @@ def menuiniziale():
 
             def registerpage():
 
+                #new user registration function
                 def registration():
                     name = regus.get()
                     password = regpwd.get()
@@ -517,8 +531,10 @@ def menuiniziale():
                 button.grid(row=5, column=0, padx=20, pady=0)
                 regframe.grab_set()
 
+            #login function
             def loginpage():
 
+                #test registration function with database query
                 def test_reg(name, password):
                     tablecreation()
                     conn = sqlite3.connect("loginlist.db")
@@ -536,6 +552,7 @@ def menuiniziale():
 
                         return "User already register"
 
+                #login function
                 def login():
                     global log
                     name = logus.get()
@@ -612,6 +629,8 @@ def menuiniziale():
 # -----------------------------------------------------------------------------------------------------------------------
 
     def quartotasto():
+
+        #SSL function
         def sslscan():
             hostname = str(entry5.get())
 
@@ -682,7 +701,7 @@ def menuiniziale():
         #root.geometry("500x750")
         root.title("ITS TTF IP HUNTER - Network Scanner - Luca Longhi")
 
-
+        #function for scan every single port in a range
         def networkscan():
             try:
                 startTime = time.time()
@@ -692,6 +711,7 @@ def menuiniziale():
                 t_IP = gethostbyname(target)
                 print('Starting scan on host: ', t_IP)
                 franco.tag_config("end", background="#7fbfbf", foreground="#003333", justify='center')
+
                 franco.insert(END, f"Scan of \'{t_IP}\' host on: {number1} port(s)\n", "end")
                 for i in range(1, int(number)):
 
