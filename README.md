@@ -1,8 +1,7 @@
 # IP-Hunter - Cybaze-Project-Work
 
-
+------------
 ### Features
-
 IP Hunter is a 360° Scanner that can do multiple operation:
 
 * IP HUNTER & CHECKER:
@@ -18,11 +17,20 @@ IP Hunter is a 360° Scanner that can do multiple operation:
 Quick start
 -----------
 
-SSLyze can be installed directly via pip:
+Module you need to have if you want IP Hunter - 360° Scanner work properly:
 
-    $ pip install --upgrade setuptools
-    $ pip install --upgrade sslyze
-    $ python -m sslyze --regular www.yahoo.com:443 www.google.com "[2607:f8b0:400a:807::2004]:443"
+* netaddr
+* ipaddress
+* tkinter
+* urllib3
+* json
+* requests
+* sqlite3
+* socket
+* dns.resolver
+* time
+* ssl
+
 
 Documentation
 -------------
