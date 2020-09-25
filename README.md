@@ -35,5 +35,5 @@ Module you need to have if you want IP Hunter - 360° Scanner work properly:
 Documentation
 -------------
 
-Documentation is [available here][documentation].
+Documentation is [available here](https://drive.google.com/file/d/1Q9rXa2MBs_8n695Y5flkLaPGahGHr7uI/view?usp=sharing).
 
