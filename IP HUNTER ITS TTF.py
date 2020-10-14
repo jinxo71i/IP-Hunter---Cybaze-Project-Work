@@ -234,24 +234,26 @@ def menuiniziale():
 
     def secondotasto():
         def IndirizzoIP():
+            dnsframe = Frame(root)
+            dnsframe.configure(background='black')
+            dnsframe.grid(row=6, column=0)
             try:
+                clear(dnsframe)
                 domain = entry.get()
                 print ("\n\nThe IP Address of the Domain Name is: ")
-                risultati = Label(root, text="The DNS server of "+ str(domain) + " is: \n", bg="black", fg="white")
-                risultati.config(font=('helvetica', 15))
+
 
                 result = dns.resolver.resolve(str(domain), 'A')
                 for ipval in result:
                     print('IP', ipval.to_text())
-
+                risultati = Label(dnsframe, text="The DNS server of " + str(domain) + " is: \n" + str(ipval.to_text()), bg="black", fg="white")
+                risultati.config(font=('helvetica', 15))
                 risultati.grid(row=6, column=0)
-                risultati2 = Label(root, text=str(ipval.to_text()), bg="black", fg="white")
-                risultati2.config(font=('helvetica', 15))
-                risultati2.grid(row=7, column=0)
                 buttonmenu = Button(root, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
-                buttonmenu.grid(row=10, column=0, sticky="N", padx=10, pady=240)
+                buttonmenu.grid(row=10, column=0, sticky="N", padx=10, pady=260)
             except:
-                risultati = Label(root, text="               DNS NON VALIDO                  ", bg="black", fg="red")
+                clear(dnsframe)
+                risultati = Label(dnsframe, text="\n               DNS NON VALIDO                  \n", bg="black", fg="red")
                 risultati.config(font=('helvetica', 15))
                 risultati.grid(row=6, column=0)
 
@@ -270,18 +272,14 @@ def menuiniziale():
         entry = Entry()
         entry.grid(row=2, column=0, sticky="WE", padx=140, pady=20)
 
-
-
         button1 = Button(text='Check DNS Server', command=IndirizzoIP, bg="cyan")
         button1.grid(row=5, column=0, sticky="N", padx=10, pady=10)
-
-
 
         ipv4frame = Frame(root)
         ipv4frame.grid(row=8, column=0, sticky="N", padx=10, pady=10)
         ipv4frame.configure(bg="black")
         buttonmenu = Button(root, text="GO BACK TO MAIN", command=menuiniziale, bg="yellow", fg="black")
-        buttonmenu.grid(row=10, column=0, sticky="N",padx=10, pady=300)
+        buttonmenu.grid(row=11, column=0, sticky="N",padx=10, pady=300)
 
 # -----------------------------------------------------------------------------------------------------------------------
 # --------------------------------------------------DATABASE WINDOW------------------------------------------------------
