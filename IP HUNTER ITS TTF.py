@@ -1,7 +1,10 @@
-#Creato da me
-
-
-
+'''
+Created by:       Luca Longhi
+Mail:             lucalonghi18@yahoo.it
+Website:          www.lucalonghi.cloud
+Last Update:      15-10-2020
+Version:          1.10.15.3
+'''
 
 
 #-----------------------------------------------------------------------------------------------------------------------
