@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4274a072-0ff5-44be-9259-890214887c2b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo DNS Resolver.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo Database.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo Login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo Login2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo Network Scanner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo Richiesta abuseipdb-ipwhois.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo SSL Scan.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2.Cybaze/IP HUNTER ITS TTF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2.Cybaze/indirizzi_testati_validi.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2.Cybaze/modificaquesto.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/IP HUNTER ITS TTF.py" beforeDir="false" afterPath="$PROJECT_DIR$/IP HUNTER ITS TTF.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,8 +71,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.IP HUNTER ITS TTF" />
+      <item itemvalue="Python.Unnamed" />
     </list>
     <recent_temporary>
       <list>
