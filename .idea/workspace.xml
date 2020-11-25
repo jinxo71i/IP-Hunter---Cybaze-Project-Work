@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4274a072-0ff5-44be-9259-890214887c2b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ip_hunter_360_scanner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ip_hunter_360_scanner.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo DNS Resolver.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo Database.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo Login.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo Login2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo Network Scanner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo Richiesta abuseipdb-ipwhois.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.Cybaze Single Modules/Modulo SSL Scan.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2.Cybaze/IP HUNTER ITS TTF.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2.Cybaze/indirizzi_testati_validi.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2.Cybaze/modificaquesto.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IP HUNTER ITS TTF.py" beforeDir="false" afterPath="$PROJECT_DIR$/IP HUNTER ITS TTF.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +34,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.IP HUNTER ITS TTF">
@@ -100,26 +110,26 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1602695912797" />
-    <state width="936" height="281" key="GridCell.Tab.0.bottom" timestamp="1606232968525">
+    <state width="1899" height="278" key="GridCell.Tab.0.bottom" timestamp="1606302342420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1515" height="213" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1602749714572" />
-    <state width="936" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606232968525" />
-    <state width="936" height="281" key="GridCell.Tab.0.center" timestamp="1606232968525">
+    <state width="1899" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606302342420" />
+    <state width="1899" height="278" key="GridCell.Tab.0.center" timestamp="1606302342420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1515" height="213" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1602749714572" />
-    <state width="936" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606232968525" />
-    <state width="936" height="281" key="GridCell.Tab.0.left" timestamp="1606232968525">
+    <state width="1899" height="278" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606302342420" />
+    <state width="1899" height="278" key="GridCell.Tab.0.left" timestamp="1606302342419">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1515" height="213" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1602749714572" />
-    <state width="936" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606232968525" />
-    <state width="936" height="281" key="GridCell.Tab.0.right" timestamp="1606232968525">
+    <state width="1899" height="278" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606302342419" />
+    <state width="1899" height="278" key="GridCell.Tab.0.right" timestamp="1606302342420">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1515" height="213" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1602749714572" />
-    <state width="936" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606232968525" />
+    <state width="1899" height="278" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606302342420" />
     <state x="346" y="77" key="SettingsEditor" timestamp="1606232768674">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

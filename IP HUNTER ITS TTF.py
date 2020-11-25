@@ -698,7 +698,9 @@ def menuiniziale():
                 number = int(number1) + 1
                 t_IP = gethostbyname(target)
                 print('Starting scan on host: ', t_IP)
-                franco.tag_config("end", background="#7fbfbf", foreground="#003333", justify='center')
+                franco.tag_config("end", background="#7fbfbf", foreground="white", justify='center')
+                franco.tag_config("divisorio", background="#000000", foreground="#003333", justify='center')
+                franco.insert(END, "   \n", "divisorio")
                 franco.insert(END, f"Scan of \'{t_IP}\' host on: {number1} port(s)\n", "end")
                 for i in range(1, int(number)):
 
@@ -722,10 +724,14 @@ def menuiniziale():
 
 
                 franco.insert(END, "Time taken by script: %.2f second(s)\n" % (minuti), "end")
+                franco.tag_config("divisorio", background="#000000", foreground="#003333", justify='center')
+                franco.insert(END, "   \n", "divisorio")
             except ValueError:
-                franco.tag_config("error", background="red", foreground="black", justify='center')
-                franco.insert(END, "SOMETHING WENT WRONG, TRY TO RETYPE THE VALUE\n" , "error")
-
+                franco.tag_config("error", background="red", foreground="white", justify='center')
+                franco.insert(END, "NUMBER OF PORT(S) NOT VALID\n" , "error")
+            except gaierror:
+                franco.tag_config("error", background="red", foreground="white", justify='center')
+                franco.insert(END, "HOST NOT VALID\n", "error")
 
         titolo = Label(root, text='NETWORK SCANNER', bg="black", fg="violet")
         titolo.config(font=('helvetica', 30))
