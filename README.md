@@ -32,6 +32,8 @@ Module you need to have if you want IP Hunter - 360° Scanner work properly:
 * time
 * ssl
 
+IP Hunter will create some databases for the administration of data and user, make sure you have any kind of programm that can open .db files
+
 
 Documentation
 -------------
