@@ -705,7 +705,7 @@ def menuiniziale():
                 for i in range(1, int(number)):
 
                     s = socket(AF_INET, SOCK_STREAM)
-                    s.settimeout(0.01)
+                    s.settimeout(0.08)
                     conn = s.connect_ex((t_IP, i))
                     franco.tag_config("open", background="green", foreground="white", justify='center')
                     if (conn == 0):
