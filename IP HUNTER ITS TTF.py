@@ -799,7 +799,7 @@ def menuiniziale():
         sotto = Label(credit, text='\n\n'
                                    'Luca Longhi\n\n'
                                     'lucalonghi18@yahoo.it\n\n'
-                                    'www.lucalonghi.cloud\n\n'
+                                    'www.lucalonghi.it\n\n'
                                     '23-09-2020\n\n'
                                     '0.09.23.4\n\n'
                                     'Giulio Monaco\nPietro Melillo\nAndrea Vercesi\nPatrizia Garavaglia\n', bg="black", fg="yellow",justify=LEFT)
