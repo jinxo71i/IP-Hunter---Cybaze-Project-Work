@@ -3,8 +3,8 @@ Created by:       Luca Longhi
 Mail:             lucalonghi18@yahoo.it
 Personal Website: www.lucalonghi.it
 Project Website:  www.iphunter.cloud
-Last Update:      17-01-2021
-Version:          2.17.1.1
+Last Update:      30-04-2021
+Version:          2.30.4.21
 '''
 
 
@@ -35,7 +35,7 @@ root.title("ITS TTF IP HUNTER - Luca Longhi")
 root.configure(background='black')
 root.resizable(False,False)
 root.grid_columnconfigure(0, weight=1)
-root.iconbitmap("C:\cybaze.ico")
+#root.iconbitmap("C:\cybaze.ico")
 
 #-----------------------------------------------------------------------------------------------------------------------
 #------------------------------------------------PULIZIA ROOT WINDOW----------------------------------------------------
@@ -460,7 +460,7 @@ def menuiniziale():
             lipage.configure(background='black')
             lipage.resizable(False, False)
             lipage.grid_columnconfigure(0, weight=1)
-            lipage.iconbitmap("C:\cybaze.ico")
+            #lipage.iconbitmap("C:\cybaze.ico")
 
             def tablecreation():
                 # db connection
@@ -507,7 +507,7 @@ def menuiniziale():
                 regframe.configure(background='black')
                 regframe.resizable(False, False)
                 regframe.grid_columnconfigure(0, weight=1)
-                regframe.iconbitmap("C:\cybaze.ico")
+                #regframe.iconbitmap("C:\cybaze.ico")
 
                 titolo = Label(regframe, text='NEW USER\nREGISTRATION', bg="black", fg="violet", font=("helvetica", 15))
                 titolo.grid(row=0, column=0, sticky="WE", padx=30, pady=10)
@@ -583,7 +583,7 @@ def menuiniziale():
                 logframe.configure(background='black')
                 logframe.resizable(False, False)
                 logframe.grid_columnconfigure(0, weight=1)
-                logframe.iconbitmap("C:\cybaze.ico")
+                #logframe.iconbitmap("C:\cybaze.ico")
 
                 resultframe = Frame(logframe)
                 resultframe.configure(background='black')
@@ -706,7 +706,7 @@ def menuiniziale():
                 for i in range(1, int(number)):
 
                     s = socket(AF_INET, SOCK_STREAM)
-                    s.settimeout(0.08)
+                    s.settimeout(0.03)
                     conn = s.connect_ex((t_IP, i))
                     franco.tag_config("open", background="green", foreground="white", justify='center')
                     if (conn == 0):
