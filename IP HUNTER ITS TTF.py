@@ -785,7 +785,7 @@ def menuiniziale():
         credit.title("Credits IP Hunter")
         credit.configure(background='black')
         credit.resizable(False, False)
-        credit.iconbitmap("C:\cybaze.ico")
+        #credit.iconbitmap("C:\cybaze.ico")
 
         titolo = Label(credit, text='\n\n'
                                     'CREATED BY:\n\n'
